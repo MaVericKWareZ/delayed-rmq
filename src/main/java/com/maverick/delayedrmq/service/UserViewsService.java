@@ -46,7 +46,7 @@ public class UserViewsService {
             redisUtil.putMap(articleIdRedisKey, VIEW_COUNT_KEY, incrementedViews);
         } else {
             redisUtil.putMap(articleIdRedisKey, VIEW_COUNT_KEY, 1L);
-            queueGateway.pushEventToQueue(articleIdRedisKey, QueueNames.USER_VIEWS_BACKOFF_QUEUE);
+            queueGateway.pushEventToQueue(articleIdRedisKey, QueueNames.USER_VIEWS_UPDATE_BACKOFF_QUEUE);
             log.info("ArticleUserViewsServiceImpl.pushMessageForViewCountUpdate() :: pushed message for viewCount update for articleIdRedisKey={}", articleIdRedisKey);
         }
     }

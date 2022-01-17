@@ -12,5 +12,5 @@ public class RabbitMQConstants {
 
     public static final String ROUTING_KEY_PREFIX = "routingkey.";
 
-    public static final String DEAD_LETTER_QUEUE = "maverick.dead.letter.queue";
+    public static final String DEAD_LETTER_QUEUE = "dead.letter.queue";
 }

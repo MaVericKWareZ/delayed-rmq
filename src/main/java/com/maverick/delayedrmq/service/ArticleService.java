@@ -22,7 +22,7 @@ public class ArticleService {
     private QueueGateway queueGateway;
 
     public ArticleDTO getArticle(Integer articleId, Integer userId) {
-        queueGateway.pushEventToQueue(prepareUserViewsDTO(articleId, userId), QueueNames.USER_VIEWS_BACKOFF_QUEUE);
+        queueGateway.pushEventToQueue(prepareUserViewsDTO(articleId, userId), QueueNames.USER_VIEWS_QUEUE);
         log.info("Pushed event to queue for articleId={},userId={}", articleId, userId);
         return getArticleByArticleId(articleId);
     }

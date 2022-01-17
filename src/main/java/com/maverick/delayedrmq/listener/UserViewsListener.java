@@ -7,9 +7,10 @@ import com.maverick.delayedrmq.service.UserViewsService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
+import org.springframework.stereotype.Component;
 
-@RabbitListener
 @AllArgsConstructor
+@Component(value = "userViewsListener")
 @Slf4j
 public class UserViewsListener {
 

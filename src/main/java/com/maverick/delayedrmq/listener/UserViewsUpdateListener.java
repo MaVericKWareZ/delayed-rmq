@@ -1,21 +1,20 @@
 package com.maverick.delayedrmq.listener;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.maverick.delayedrmq.config.QueueNames;
-import com.maverick.delayedrmq.dto.UserViewsDTO;
 import com.maverick.delayedrmq.service.UserViewsService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
+import org.springframework.stereotype.Component;
 
-@RabbitListener
 @AllArgsConstructor
+@Component(value = "userViewsUpdateListener")
 @Slf4j
 public class UserViewsUpdateListener {
 
     private UserViewsService userViewsService;
 
-    @RabbitListener(queues = QueueNames.USER_VIEWS_UDPATE_QUEUE, containerFactory = "simpleRabbitListenerContainerFactory")
+    @RabbitListener(queues = QueueNames.USER_VIEWS_UPDATE_QUEUE, containerFactory = "simpleRabbitListenerContainerFactory")
     public void processEvent(String payload) {
         try {
             userViewsService.processViewsUpdate(payload);
